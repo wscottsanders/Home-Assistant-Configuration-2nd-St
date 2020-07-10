@@ -1,0 +1,42 @@
+## These first two control the input_boolean that allows the "first morning action" to occur
+## If the action is triggered, it will also disable this boolean. This assumes you have the sun platform enabled.
+  
+  # turns it on at 6am
+  - alias: Enable First Morning Trigger
+    trigger:
+      - platform: time
+        at: '6:00'
+    action: 
+      service: homeassistant.turn_on
+      entity_id: input_boolean.trigger_first_morning
+
+  # turns it off at 10:30 in the morning. 
+  - alias: Disable First Morning Trigger
+    trigger:
+      - platform: time
+        at: '10:30'
+    action: 
+      service: homeassistant.turn_off
+      entity_id: input_boolean.trigger_first_morning
+      
+      
+# This is the main automation. It triggers when my motion sensor is triggered.
+  
+  - alias: "Lights w/ First Motion in Morning"
+    trigger:
+      platform: state
+      entity_id: sensor.pir_1
+      to: '1'
+    # only complete the automation if we're still waiting for the first motion
+    condition:
+      condition: state
+      entity_id: input_boolean.trigger_first_morning
+      state: 'on'
+    action:
+      - service: homeassistant.turn_off
+        entity_id: input_boolean.trigger_first_morning
+      - service: scene.turn_on
+        entity_id: scene.MorningTime
+      - service: homeassistant.turn_on
+        entity_id: switch.kettle
+    

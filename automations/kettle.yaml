@@ -1,0 +1,8 @@
+  # turns it off at 10:30 in the morning. 
+  - alias: Disable Kettle Switch
+    trigger:
+      - platform: time
+        at: '20:00'
+    action: 
+      service: homeassistant.turn_off
+      entity_id: switch.kettle

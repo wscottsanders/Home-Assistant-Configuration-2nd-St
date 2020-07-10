@@ -1,0 +1,122 @@
+########################################
+## Configuration File 
+########################################
+
+homeassistant:
+  name: Home - Louisville, KY
+  latitude: 38.232935
+  longitude: -85.757177
+  elevation: 459
+  unit_system: imperial
+  time_zone: America/New_York
+  customize: !include customize.yaml
+    
+# Enables the frontend
+frontend:
+
+# Enables configuration panel
+config: 
+
+# Enable remote access.  
+http:
+  api_password: !secret http_password
+  ssl_certificate: /home/homeassistant/dehydrated/certs/baldr.duckdns.org/fullchain.pem  
+  ssl_key: /home/homeassistant/dehydrated/certs/baldr.duckdns.org/privkey.pem
+  base_url: baldr.duckdns.org:8123
+  ip_ban_enabled: True
+  trusted_networks:
+    - 192.168.1.76
+    - 192.168.1.77
+    - 192.168.1.83
+    - 192.168.1.81
+    - 192.168.1.75
+  login_attempts_threshold: 5 
+
+# MQTT broker (i.e. server) for communicating with remote applications.  
+mqtt:
+  broker: 127.0.0.1
+  port: 1883
+      
+# Checks for available updates
+updater:
+
+# Discover some devices automatically
+discovery:
+  ignore:
+    - google_cast 
+        
+# Only keep X days of history/logs. 
+recorder:
+  purge_keep_days: 15
+  db_url: !secret db
+      
+# Track the sun
+sun:
+      
+# Creates emulated hue for voice control via Alexa
+emulated_hue:
+  expose_by_default: false
+  off_maps_to_on_domains: 
+    - scene
+  exposed_domains: 
+    - switch 
+    - scene
+
+# Configures for IOS application
+ios:
+
+# Configure alexa webservices
+alexa: 
+
+# Media Players 
+media_player:
+  - platform: spotify
+    client_id: !secret spotify_id
+    client_secret: !secret spotify_secret
+  - platform: samsungtv
+    host: 192.168.1.94
+    port: 8001
+    mac: d4:b2:7a:42:98:42
+    name: "Samsung TV"
+    timeout: 8    
+
+# Sets up communication with Wink hub.  
+wink:
+
+# Creates a user defined sensor for early morning motion detection.   
+input_boolean:
+  trigger_first_morning:
+    name: Waiting for first morning motion
+    icon: mdi:kettle
+  spotify_trigger: 
+    name: Turn on spotify. 
+    initial: off
+  bedtime: 
+    name: bedtime
+    initial: off
+  leaving: 
+    name: leaving
+    initial: off 
+  coming_home: 
+    name: coming_home
+    initial: off
+  alexa_goodnight:
+    name: Alexa Goodnight
+    initial: off
+  alexa_goodmorning:
+    name: Alexa Goodmorning
+    initial: off    
+    
+# Sets up google calendar. 
+google:
+  client_id: !secret google_id  
+  client_secret: !secret google_secret 
+
+automation: !include_dir_merge_list automations      
+group: !include groups.yaml
+history: !include history.yaml
+intent_script: !include intent_script.yaml
+logbook: !include logbook.yaml 
+script: !include_dir_merge_named scripts
+sensor: !include sensor.yaml
+switch: !include switch.yaml

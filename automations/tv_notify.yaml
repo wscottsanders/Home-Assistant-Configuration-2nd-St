@@ -1,0 +1,24 @@
+- alias: "TV Alert - On"
+  trigger:
+    platform: state
+    entity_id: media_player.samsung_tv
+    to: 'on'
+    for: 
+      seconds: 20 
+  action:
+    service: notify.ios_thor
+    data:
+      message: "The television is on!"
+
+      
+- alias: "TV Alert - Off"
+  trigger: 
+    platform: state
+    entity_id: media_player.samsung_tv
+    to: 'off'
+    for: 
+      seconds: 20    
+  action:
+    service: notify.ios_thor
+    data:
+      message: "The television is off!"

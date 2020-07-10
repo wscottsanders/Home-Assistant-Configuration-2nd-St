@@ -1,0 +1,24 @@
+timed_pantry_light:
+  alias: "Turn on pantry light and set timer"
+  sequence:
+    # Cancel ev. old timers
+    - service: script.turn_off
+      data:
+        entity_id: script.pantry_timer_off
+    - service: homeassistant.turn_on
+      data:      
+        entity_id: switch.pantry_light
+    # Set new timer
+    - service: script.turn_on
+      data:
+        entity_id: script.pantry_timer_off
+
+pantry_timer_off:
+  alias: "Turn off light after 10 minutes"
+  sequence:
+    - delay:
+        minutes: 5
+    - service: homeassistant.turn_off
+      data:
+        entity_id: switch.pantry_light
+     

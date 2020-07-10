@@ -1,0 +1,13 @@
+# Turns off the pantry light after it's been on for more than 
+# 10 minutes. 
+
+- alias: "Pantry Light Timer"
+  trigger: 
+    - platform: state 
+      entity_id: switch.pantry_light 
+      to: 'on' 
+      for: 
+        minutes: 10
+  action:
+    - service: homeassistant.turn_off 
+      entity_id: switch.pantry_light 

@@ -1,0 +1,28 @@
+  #BedtimeIntent:
+  amzn1.ask.skill.715ffbcc-5077-4e93-af5e-a721e1012c0f: 
+    action:
+      service: homeassistant.turn_on
+      entity_id: input_boolean.bedtime
+    speech:
+      type: plain
+      text: !include alexa_responses/alexa_bedtime.yaml
+      
+  #LeavingIntent:
+  amzn1.ask.skill.f19999fb-cfe8-4f88-bf2d-afe81652761f: 
+    action:
+      service: scene.turn_on
+      entity_id: scene.alllightsoff
+    speech:
+      type: plain
+      text: !include alexa_responses/alexa_leaving.yaml
+      
+  #ComeHomeIntent:
+  amzn1.ask.skill.eef625be-62f6-4bfc-8b8b-64b411641a46: 
+    action:
+      service: scene.turn_on
+      entity_id: scene.alllightson
+    speech:
+      type: plain
+      text: !include alexa_responses/alexa_greeting.yaml
+
+ 

@@ -1,0 +1,14 @@
+  # Automatically turns off input booleans. 
+  - alias: Turn off alexa input booleans.
+    trigger:
+      platform: state
+      entity_id: input_boolean.alexa_goodnight, input_boolean.alexa_goodmorning
+
+      to: 'on'
+      for:
+        seconds: 10
+
+    action:
+      - service: homeassistant.turn_off
+        data_template:
+          entity_id: "{{ trigger.entity_id }}"

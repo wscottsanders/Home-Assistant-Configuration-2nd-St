@@ -1,0 +1,26 @@
+timed_light:
+  alias: "Turn on light and set timer"
+  sequence:
+    # Cancel ev. old timers
+    - service: script.turn_off
+      data:
+        entity_id: script.timer_off
+    - service: scene.turn_on
+      data:
+        entity_id: scene.NightMotion
+    # Set new timer
+    - service: script.turn_on
+      data:
+        entity_id: script.timer_off
+
+timer_off:
+  alias: "Turn off light after 10 minutes"
+  sequence:
+    - delay:
+        minutes: 10
+    - service: light.turn_off
+      data:
+        entity_id: light.kitchen_overhead
+    - service: light.turn_off
+      data:
+        entity_id: light.living_overhead       

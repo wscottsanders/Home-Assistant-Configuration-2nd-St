@@ -1,0 +1,20 @@
+- alias: "Night Light w/ Motion."
+  trigger:
+    - platform: state
+      entity_id: sensor.pir_1 
+      to: '1'
+  condition: 
+    condition: and
+    conditions:     
+      - condition: state 
+        entity_id: input_boolean.bedtime
+        state: 'on'
+      - condition: state
+        entity_id: light.living_overhead
+        state: 'off'
+      - condition: state 
+        entity_id: light.kitchen_overhead 
+        state: 'off'         
+  action:
+    - service: homeassistant.turn_on
+      entity_id: script.timed_light

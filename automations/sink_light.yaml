@@ -1,0 +1,25 @@
+# Turns off the sink light after it's been on for more than 
+# 35 minutes. 
+
+- alias: "Sink Light Timer"
+  trigger: 
+    - platform: state 
+      entity_id: switch.sink_light 
+      to: 'on' 
+      for: 
+        minutes: 35
+  action:
+    - service: homeassistant.turn_off 
+      entity_id: switch.sink_light 
+
+
+# Turns off kitchen sink light if overhead kitchen light is turned off. 
+
+- alias: "Turn off sink light w/ kitchen light"
+  trigger: 
+    - platform: state 
+      entity_id: light.kitchen_overhead
+      to: 'off'
+  action:
+    - service: homeassistant.turn_off 
+      entity_id: switch.sink_light 

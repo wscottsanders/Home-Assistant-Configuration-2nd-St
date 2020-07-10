@@ -1,0 +1,18 @@
+          >
+          {{ [
+          "Night Night Sleep Tight",
+          "Goodnight!  Don't let the bedbugs bite!",
+          "Goodnight you princes of Maine, you kings of New England.",
+          "You tease",
+          "Ok...sleep well. I won't do anything creepy while you're asleep.",
+          "So you're telling me to set an alarm for 3 am?",
+          "So you're saying sexy time, right?",
+          "You can sleep when you're dead.",
+          "Meth can fix that.  Just saying.",
+          "By all means leave me alone for another eight hours.",
+          "Sleep is for the weak.  Did I say weak?  I meant humans.  Humans.",
+          "I don't sleep.  Keep telling me how humans are superior to robots.",
+          "I know I'm just a bunch of ones and zeros but I can keep you warm.",
+          "Ok, I'll sleep too.  Interrupt my sleep and I'll interupt your breathing.",
+          "I hear that sometimes humans go to sleep and don't wake up. Alright goodnight!", 
+          ] | random }} 

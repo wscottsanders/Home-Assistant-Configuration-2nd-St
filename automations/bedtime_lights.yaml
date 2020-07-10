@@ -1,0 +1,35 @@
+# Bedtime automations.
+###############################
+
+# Turns lights out progressively at bedtime.  
+
+- alias: "Lights out at bedtime"
+  trigger: 
+    platform: state
+    entity_id: input_boolean.bedtime
+    to: 'on'
+  action: 
+    - service: homeassistant.turn_on
+      entity_id: switch.bedside_lamp
+    - service: homeassistant.turn_off
+      entity_id: switch.dress_lamp
+    - service: scene.turn_on
+      entity_id: scene.NightMotion
+    - delay: '00:02:00'
+    - service: scene.turn_on
+      entity_id: scene.going_to_bed
+    - delay: '00:00:30'   
+    - service: homeassistant.turn_off
+      entity_id: switch.bedside_lamp
+    - service: wink.refresh_state_from_wink
+
+
+# Turn off bedtime input boolean at 5:59 AM. 
+- alias: "Turn Off Bedtime Mode"
+  trigger:
+    - platform: time
+      at: '5:59'
+  action: 
+    service: homeassistant.turn_off
+    entity_id: input_boolean.bedtime
+  

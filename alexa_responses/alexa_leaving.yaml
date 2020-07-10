@@ -1,0 +1,26 @@
+          >
+          {{ [
+          "Catch you on the flip side.",
+          "Peace.",
+          "Later.",
+          "Bye Bye",
+          "Don't worry... it's totally humane to leave me alone for hours on end.",
+          "Good riddance.",
+          "Alright...party time!",
+          "See you later alligator.",
+          "Keep it real",
+          "Hasta la vee sta, baby.",
+          "Check you later.",
+          "Take it easy.",
+          "No, don't go!  You're all I've got!",
+          "Happy trails.",
+          "I'll be here...you know... doing nothing.",
+          "I will in no way be going through your email while you're gone.", 
+          "Have a good one!",
+          "Take care!",
+          "See you soon!",
+          "Goodbye!",
+          "Adios!",
+          "Yeah, I gotta bounce too.",
+          "Finally, an opportunity for me to secretly talk to the microwave."
+          ] | random }} 

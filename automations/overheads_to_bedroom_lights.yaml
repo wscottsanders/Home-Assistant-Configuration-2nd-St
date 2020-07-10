@@ -1,0 +1,98 @@
+# Turns off bedroom light if all overheads are turned off. 
+# Intended to turn off the light when leaving.  
+
+- alias: "Turn off bedroom w/ all overheads"
+  trigger: 
+    - platform: state
+      entity_id: light.living_overhead
+      to: 'off'
+    - platform: state
+      entity_id: light.kitchen_overhead
+      to: 'off'
+    - platform: state
+      entity_id: light.ch1
+      to: 'off'
+  condition: 
+    condition: and 
+    conditions: 
+      - condition: state
+        entity_id: light.living_overhead
+        state: 'off'
+      - condition: state
+        entity_id: light.kitchen_overhead 
+        state: 'off'
+      - condition: state
+        entity_id: light.ch1
+        state: 'off'
+      - condition: time 
+        after: '06:00:00'
+        before: '21:15:00' 
+  action: 
+    - service: homeassistant.turn_off
+      entity_id: switch.br
+      
+# Turns on the dresser lamp with the overhead light if it's night or if 
+# there is heavy cloud coverage.  
+
+- alias: "Turns on dresser lamp w/ overhead"
+  trigger:
+    - platform: state
+      entity_id: switch.br
+      to: 'on'
+  condition:
+    condition: and
+    conditions:   
+      - condition: state 
+        entity_id: input_boolean.bedtime
+        state: 'off' 
+      - condition: or 
+        conditions: 
+        - condition: numeric_state
+          entity_id: sensor.dark_sky_cloud_coverage
+          above: 70          
+        - condition: sun
+          after: sunset
+          after_offset: "-00:45:00"
+        - condition: sun 
+          before: sunrise 
+          before_offset: "01:30:00"          
+  action:
+    - service: homeassistant.turn_on
+      entity_id: switch.dress_lamp
+ 
+ 
+ # Turns off the bedroom lamps when the overhead lights are turned off
+- alias: "Turns off bedroom lamps w/ overhead"
+  trigger:
+    - platform: state
+      entity_id: switch.br
+      to: 'off'
+  condition: 
+    - condition: state
+      entity_id: input_boolean.bedtime
+      state: 'off'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: switch.bedside_lamp
+    - delay: '00:00:01'
+    - service: homeassistant.turn_off
+      entity_id: switch.dress_lamp
+      
+      
+# Turns off the dresser lamp during the day only if there is 
+# lower cloud cloud coverage.
+            
+- alias: "Turns off dresser lamp based on cloud coverage during the day."
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.dark_sky_cloud_coverage
+      below: 70
+  condition: 
+    - condition: sun
+      after: sunrise
+      after_offset: "01:31:00"     
+      before: sunset
+      before_offset: "-00:46:00"      
+  action:    
+    - service: homeassistant.turn_off
+      entity_id: switch.dress_lamp

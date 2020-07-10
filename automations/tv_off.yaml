@@ -1,0 +1,39 @@
+- alias: "TV Auto-Off"
+  trigger: 
+    platform: state
+    entity_id: media_player.samsung_tv
+    from: 'off'
+    to: 'on'
+    for: 
+      minutes: 8
+  condition:
+    condition: and 
+    conditions: 
+      - condition: state
+        entity_id: light.living_overhead
+        state: 'off'    
+      - condition: or
+        conditions:
+          - condition: time
+            after: '22:00:00'
+            before: '16:15:00'  
+            weekday:
+              - mon
+              - tue
+              - wed
+              - thu
+              - fri 
+          - condition: time
+            after: '22:00:00'
+            before: '09:15:00'
+            weekday: 
+              - sat
+              - sun           
+  action:
+    - service: homeassistant.turn_off
+      entity_id: switch.tv_power
+    - service: notify.ios_thor
+      data:
+        message: "TV auto-off automation has triggered!"
+
+   

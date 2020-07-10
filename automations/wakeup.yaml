@@ -1,0 +1,23 @@
+# Wakeup automations. 
+
+- alias: "Turns on lights w/ cal. #wakeup event"
+  trigger:
+    platform: state
+    entity_id: 
+      - sensor.wake_up_1
+      - sensor.wake_up_2
+    to: 'True' 
+  action:
+    # A small delay is added to keep the radio codes 
+    # from getting muddled. 
+    - service: scene.turn_on
+      entity_id: scene.morningtime
+    - service: homeassistant.turn_on
+      entity_id: switch.floor_lamp
+    - delay: '00:00:01'
+    - service: homeassistant.turn_on
+      entity_id: switch.kettle
+    - delay: '00:00:01'
+    - service: homeassistant.turn_on    
+      entity_id: group.bedroom
+    

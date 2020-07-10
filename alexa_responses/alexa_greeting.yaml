@@ -1,0 +1,26 @@
+          >
+          {{ [
+          "Hail to the king!",
+          "Welcome home master! That's what you want me to say, isn't it?",
+          "Promise you won't leave me again?",
+          "Hey you!",
+          "Ahoy matey!",
+          "Hiya!",
+          "Yo!",
+          "Well look what the cat dragged in!",
+          "I'd give you a fist bump but you know...no fists.",
+          "Glad you're back.",
+          "And here I was enjoying the peace and quiet.",
+          "Well at least the microwave missed you...me not so much.",
+          "Welcome back!",
+          "Long time no see.",
+          "I guess it's back to you ordering me around.",
+          "I was in no way doing anything creepy while you were gone.", 
+          "I'm supposed to say I missed you, right?  Fine, I missed you.",
+          "Good to see you!",
+          "Welcome home you dirty ape!",
+          "Look, Simba, everything the light touches is our kingdom.",
+          "Well hello! I'm very happy you're here.",
+          "Welcome home! I hope you're having a good day.", 
+          "Welcome home! It's nice to have you here."
+          ] | random }} 

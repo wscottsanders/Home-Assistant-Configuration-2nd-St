@@ -1,0 +1,251 @@
+#################################################################
+## Groups
+#################################################################
+
+######## GROUPS - No Views 
+
+  AV_automations: 
+    name: AV_automations
+    view: no
+    entities: 
+      - automation.turn_on_tv_mode_w_tv
+      - automation.tv_autooff
+      - automation.tv_alert__on
+      - automation.tv_alert__off
+     
+  bathroom: 
+    name: Bathroom 
+    view: no
+    entities: 
+      - light.bath1
+      - light.bath2
+      - light.bath3  
+
+  bedroom:
+    name: Bedroom
+    view: no
+    entities:
+      - switch.br    
+      - switch.bedside_lamp
+      - switch.dress_lamp
+  
+  bedtime_automations:
+    name: bedtime_automations
+    view: no
+    entities: 
+      - automation.lights_w_first_motion_in_morning
+      - automation.turns_on_lights_w_cal_wakeup_event
+       
+  chandelier:
+    name: chandelier
+    view: no    
+    entities: 
+      - light.ch1
+      - light.ch2
+      - light.ch3
+      - light.ch4 
+      
+  everything:
+    name: everything
+    view: no
+    entities:
+      - switch.bedside_lamp
+      - switch.dress_lamp
+      - switch.floor_lamp
+      - light.living_overhead
+      - group.kitchen
+      - group.chandelier 
+  
+  gavin: 
+    name: Gavin 
+    view: no
+    entities:     
+      - device_tracker.gavin
+      - device_tracker.gavin_2
+       
+  lamps:
+    name: lamps
+    view: no 
+    entities: 
+      - switch.floor_lamp
+      - switch.desk_lamp
+      - switch.bedside_lamp
+      - switch.dress_lamp
+ 
+  lamp_automations:
+    name: Lamp_Automations
+    view: no
+    entities: 
+      - automation.turn_off_lamps_at_bedtime 
+      - automation.turn_on_lamps_at_sunset
+      - automation.turns_off_lamp_based_on_cloud_coverage_during_the_day
+      - automation.turn_off_sink_light_w_kitchen_light
+      - automation.turns_off_lamps_w_overhead
+ 
+  living_room:
+    name: Living room 
+    view: no
+    entities:
+      - light.living_overhead
+      - group.chandelier 
+      - switch.floor_lamp
+  
+  kitchen:
+    name: Kitchen 
+    view: no 
+    entities: 
+      - light.kitchen_overhead
+      - switch.sink_light
+      - switch.kettle
+      
+  motion_automations: 
+    name: motion_based
+    view: no
+    entities: 
+      - automation.night_light_w_motion
+      - automation.pantry_light_w_motion
+  
+  overhead_lights: 
+    name: overhead_lights 
+    view: no    
+    entities:
+      - light.kitchen_overhead
+      - light.living_overhead
+      - group.chandelier      
+  
+  pantry: 
+    name: Pantry
+    view: no 
+    entities: 
+      - switch.pantry_light  
+
+  presence_automations: 
+    name: Presence_Based
+    view: no
+    entities: 
+      - automation.turn_lights_on_when_home_daytime
+      - automation.turn_lights_on_when_home_night
+      - automation.turn_lights_off_when_not_home   
+
+  raspberry_pi: 
+    name: raspberry_pi
+    view: no
+    entities:
+      - sensor.ipv4_address_eth0
+      - sensor.since_last_boot
+      - sensor.memory_use_percent
+      - sensor.memory_free
+      - sensor.swap_use_percent
+      - sensor.processor_use
+      - sensor.disk_use_percent_    
+    
+  sabnzbd:
+    name: sabnzbd
+    view: no 
+    entities: 
+      - sensor.sabnzbd_status
+      - sensor.sabnzbd_speed
+      - sensor.sabnzbd_queue
+  
+  scott:
+    name: Scott
+    view: no
+    entities:     
+      - device_tracker.thor
+      - device_tracker.thor_2
+      - device_tracker.odinattnet
+    
+  sensors:
+    name: Sensors
+    view: no
+    entities:   
+      - sensor.pir_1
+      - sensor.pir_2
+      - sensor.lux_1
+      - sensor.temperature_LR
+      - sensor.humidity_LR      
+      
+  television: 
+    name: Television
+    view: no 
+    entities: 
+      - switch.tv_power
+      - switch.tv_mute
+      - switch.tv_pause 
+      - switch.soundbar_power 
+      - switch.subwoofer
+      - switch.soundbar_surround
+      - input_boolean.soundbar_source
+      - switch.netflix
+      - switch.hbo
+      - switch.kodi
+      - switch.amazon_prime
+      - switch.pbs
+      - switch.sickbeard
+      - switch.nzb
+  
+  timer_automations:
+    name: Timers
+    view: no
+    entities:
+      - automation.sink_light_timer
+      - automation.pantry_light_timer
+      
+  weather: 
+    name: Weather
+    view: no    
+    entities:
+      - sun.sun
+      - sensor.dark_sky_summary
+      - sensor.dark_sky_temperature
+      - sensor.dark_sky_precip_type
+      - sensor.dark_sky_precip_probability
+      - sensor.dark_sky_precip_intensity
+      - sensor.dark_sky_cloud_coverage
+      
+  whos_home: 
+    name: whos_home
+    view: no
+    entities:
+      - group.scott
+      - device_tracker.nathan
+      - group.gavin
+
+
+
+############### VIEWS 
+  default_view: 
+    view: yes
+    entities:
+     - group.overhead_lights
+     - group.living_room
+     - group.kitchen
+     - group.bedroom
+     - group.bathroom
+     - group.pantry 
+     - group.television
+     - scene.movie_mode
+     - scene.raise_lights
+     - scene.date_night
+  
+  sensor_info: 
+    name: sensor_info
+    view: yes 
+    entities: 
+      - group.whos_home
+      - group.raspberry_pi
+      - group.sabnzbd
+      - group.sensors
+      - group.weather 
+
+  automations: 
+    name: Automations
+    view: yes 
+    entities: 
+      - group.AV_automations
+      - group.bedtime_automations
+      - group.lamp_automations
+      - group.motion_automations
+      - group.presence_automations
+      - group.timer_automations
+

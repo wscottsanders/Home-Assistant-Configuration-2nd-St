@@ -1,0 +1,279 @@
+#################################################################
+## Customize
+#################################################################
+    
+    # Automations 
+    automation.night_light_w_motion:
+      icon: mdi:settings 
+    automation.pantry_light_w_motion:
+      icon: mdi:settings 
+    automation.change_soundbar_source:
+      icon: mdi:settings 
+    automation.turn_on_tv_mode_w_tv:
+      icon: mdi:settings 
+    automation.tv_off:
+      icon: mdi:settings 
+    automation.tv_alert__on:
+      icon: mdi:settings 
+    automation.tv_alert__off:
+      icon: mdi:settings 
+    automation.lights_w_first_motion_in_morning:
+      icon: mdi:settings 
+    automation.turns_on_lights_w_cal_wakeup_event:
+      icon: mdi:settings 
+    automation.turn_off_lamps_at_bedtime:
+      icon: mdi:settings  
+    automation.turn_on_lamps_at_sunset:
+      icon: mdi:settings 
+    automation.turns_off_lamp_based_on_cloud_coverage_during_the_day:
+      icon: mdi:settings 
+    automation.turn_off_sink_light_w_kitchen_light:
+      icon: mdi:settings 
+    automation.turns_off_lamps_w_overhead:
+      icon: mdi:settings 
+    automation.turn_lights_on_when_home_daytime:
+      icon: mdi:settings 
+    automation.turn_lights_on_when_home_night:
+      icon: mdi:settings 
+    automation.turn_lights_off_when_not_home:
+      icon: mdi:settings 
+    automation.sink_light_timer:
+      icon: mdi:settings 
+    automation.pantry_light_timer:
+      icon: mdi:settings 
+    automation.pantry_lights_on_motion:
+      icon: mdi:settings 
+      
+
+    # Groups
+    
+    group.AV_automations: 
+      emulated_hue_hidden: true
+      friendly_name: "AV Automations"
+    group.bedroom:
+      emulated_hue_hidden: true
+    group.bedtime_automations: 
+      emulated_hue_hidden: true
+      friendly_name: "Bedtime Automations"
+      icon: mdi:settings 
+    group.chandelier: 
+      emulated_hue_hidden: true
+      friendly_name: "Chandelier"
+      icon: mdi:lightbulb-outline
+    group.default_view: 
+      emulated_hue_hidden: true
+      friendly_name: "Switches"
+    group.everything:
+      emulated_hue_hidden: false
+      friendly_name: "Everything"
+    group.gavin: 
+      emulated_hue_hidden: true
+      friendly_name: "Gavin"
+      entity_picture: /local/gavin.png
+    group.lamps:
+      emulated_hue_hidden: false
+      friendly_name: "Lamps"
+      icon: mdi:lamp
+    group.lamp_automations: 
+      emulated_hue_hidden: true
+      friendly_name: "Lamp Automations"
+    group.living_room:
+      emulated_hue_hidden: true
+    group.living_room_overhead:
+      emulated_hue_hidden: true
+      friendly_name: "Living Room Overhead Lights"
+      icon: mdi:lightbulb-outline
+    group.kitchen: 
+      emulated_hue_hidden: true
+    group.kitchen_overhead: 
+      emulated_hue_hidden: true
+      icon: mdi:lightbulb-outline
+    group.motion_automations: 
+      emulated_hue_hidden: true
+      friendly_name: "Motion-Based Automations"
+    group.overhead_lights: 
+      emulated_hue_hidden: true
+      friendly_name: "Overhead Lights"
+      icon: mdi:lightbulb-outline
+    group.presence_automations: 
+      emulated_hue_hidden: true
+      friendly_name: "Presence-Based Automations"
+    group.raspberry_pi: 
+      emulated_hue_hidden: true
+      friendly_name: "Raspberry Pi"
+    group.scott: 
+      emulated_hue_hidden: true
+      friendly_name: "Scott"
+      entity_picture: /local/pic.png
+    group.sensor_info: 
+      emulated_hue_hidden: true
+      friendly_name: "Sensor Info."
+    group.timer_automations: 
+      emulated_hue_hidden: true
+      friendly_name: "Timer Automations" 
+    group.weather:
+      emulated_hue_hidden: truee
+    group.whos_home:
+      emulated_hue_hidden: true
+      friendly_name: "Who's Home?"
+    
+    # Input Boolean 
+    input_boolean.soundbar_source: 
+      emulated_hue_hidden: false 
+      friendly_name: "Soundbar Source"
+      icon: mdi:speaker-wireless
+    input_boolean.bedtime: 
+      emulated_hue_hidden: false 
+      friendly_name: "Bedtime"
+      icon: mdi:sleep
+    input_boolean.leaving: 
+      emulated_hue_hidden: false
+    input_boolean.coming_home: 
+      emulated_hue_hidden: false  
+   
+    # Light
+    light.kitchen_overhead: 
+      emulated_hue_hidden: true
+      friendly_name: "Kitchen Overhead" 
+      icon: mdi:lightbulb-outline
+
+    light.living_overhead: 
+      emulated_hue_hidden: true
+      friendly_name: "Living Room Overhead Light" 
+      icon: mdi:lightbulb-outline
+
+
+    # Packages
+    packages.alexa: &customize
+      package: 'alexa'
+
+    input_boolean.alexa_goodnight:
+      friendly_name: "Alexa Goodnight"
+      emulated_hue: true
+
+    input_boolean.alexa_goodmorning:
+      friendly_name: "Alexa Goodmorning"
+      emulated_hue: true 
+
+
+
+    # Scenes
+    scene.raise_lights:
+      emulated_hue_hidden: true
+      friendly_name: "Raise Lights"  
+    scene.movie_mode: 
+      emulated_hue_hidden: true
+      friendly_name: "Movie Mode"
+    scene.date_night_hidden:
+      emulated_hue: true
+      friendly_name: "Date Night"
+    
+    # Sensors 
+    sensor.pir_1:
+      friendly_name: "Main Room Motion Sensor"
+      icon: mdi:run-fast
+    sensor.pir_2:
+      friendly_name: "Pantry Motion Sensor"
+      icon: mdi:run-fast
+    sensor.lux_1: 
+      friendly_name: "Light Sensor"
+      icon: mdi:brightness-4
+    sensor.humidity_LR:
+      friendly_name: "Living Room Humidity"
+      icon: mdi:water-percent
+    sensor.temperature_LR: 
+      friendly_name: "Living Room Temperature"
+      icon: mdi:thermometer
+    sensor.dark_sky_summary: 
+      friendly_name: "Summary"
+    sensor.dark_sky_temperature:
+      friendly_name: "Outside Temperature"
+    sensor.dark_sky_precip_type:
+      friendly_name: "Precipitation Type"
+    sensor.dark_sky_precip_probability:
+      friendly_name: "Probability of Precipitation"
+    sensor.dark_sky_precip_intensity:
+      friendly_name: "Precipitation Intensity"
+    sensor.dark_sky_cloud_coverage:
+      friendly_name: "Percent Cloud Cover"
+    sensor.ipv4_address_eth0: 
+      friendly_name: "IP Address"
+    sensor.since_last_boot: 
+      friendly_name: "Since Last Boot"
+    sensor.ram_use: 
+      friendly_name: "RAM Use"
+    sensor.ram_free: 
+      friendly_name: "Free RAM"
+    sensor.swap_use: 
+      friendly_name: "Swap Use"
+    sensor.cpu_use: 
+      friendly_name: "CPU Use"
+    sensor.disk_use_: 
+      friendly_name: "Disk Use"
+        
+      
+    # Switches
+    switch.br: 
+      emulated_hue_hidden: false
+      friendly_name: "Bedroom Light" 
+      icon: mdi:lightbulb-outline
+    switch.bedside_lamp:
+      emulated_hue_hidden: false
+      friendly_name: "Bedside Lamps"
+      icon: mdi:lamp
+    switch.dress_lamp:
+      emulated_hue_hidden: false 
+      friendly_name: "Dresser Lamp"
+      icon: mdi:lamp
+    switch.floor_lamp:
+      emulated_hue_hidden: false
+      friendly_name: "Floor Lamp"
+      icon: mdi:lamp
+    switch.desk_lamp: 
+      emulated_hue_hidden: false
+      friendly_name: "Desk Lamp"
+      icon: mdi:lamp
+    switch.kettle: 
+      emulated_hue_hidden: false
+      friendly_name: "Kettle"
+      icon: mdi:kettle
+    switch.pantry: 
+      emulated_hue_hidden: false 
+      friendly_name: "Pantry" 
+      icon: mdi:lightbulb-outline
+    switch.pantry_light: 
+      emulated_hue_hidden: false
+      friendly_name: "Pantry Light" 
+      icon: mdi:lightbulb-outline
+    switch.sink_light: 
+      emulated_hue_hidden: false
+      friendly_name: "Sink Light"
+      icon: mdi:lightbulb-outline 
+    switch.soundbar_power: 
+      emulated_hue_hidden: false
+      friendly_name: "Soundbar" 
+      icon: mdi:speaker-wireless
+    switch.soundbar_surround: 
+      emulated_hue_hidden: false
+      friendly_name: "Surround Sound" 
+      icon: mdi:speaker-wireless
+    switch.soundbar_vol: 
+      emulated_hue_hidden: false
+      friendly_name: "Soundbar Volume"
+      icon: mdi:speaker-wireless
+    switch.subwoofer: 
+      emulated_hue_hidden: false 
+      friendly_name: "Subwoofer" 
+      icon: mdi:speaker-wireless
+    switch.tv_mute: 
+      emulated_hue_hidden: false
+      friendly_name: "Mute the TV"
+      icon: mdi:television
+    switch.tv_pause: 
+      emulated_hue_hidden: false
+      friendly_name: "TV Play/Pause"
+      icon: mdi:television
+    switch.tv_power: 
+      emulated_hue_hidden: false 
+      friendly_name: "TV"
+      icon: mdi:television

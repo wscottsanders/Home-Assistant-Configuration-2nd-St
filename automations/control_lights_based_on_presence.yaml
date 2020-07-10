@@ -1,0 +1,65 @@
+# Turns off the lights based on when Scott is or is not home. 
+# Note the conditions are set with the bedtime boolean so that the 
+# state of lights does not change in the middle of the night 
+# (e.g. turning off the overhead fan).  
+
+#- alias: "Turn lights off when not home"
+#  trigger:
+#    platform: state 
+#    entity_id: group.scott
+#    from: 'home'
+#    to: 'not_home'
+#  condition: 
+#    condition: state 
+#    entity_id: input_boolean.bedtime
+#    state: 'off' 
+#  action:
+#    - service: homeassistant.turn_off
+#      entity_id: group.everything
+#    - condition: state
+#      entity_id: switch.tv_power 
+#      state: 'on' 
+#    - service: homeassistant.turn_off 
+#      entity_id: switch.tv_power    
+ 
+- alias: "Turn lights on when home (Daytime)"
+  trigger:
+    platform: state 
+    entity_id: group.scott
+    from: 'not_home'
+    to: 'home'
+  condition:
+    condition: and
+    conditions:  
+      - condition: time 
+        after: '03:30:00' 
+        before: '21:00:00'
+      - condition: state
+        entity_id: input_boolean.bedtime
+        state: 'off' 
+  action:
+    - service: homeassistant.turn_on
+      entity_id: scene.raise_lights_
+
+- alias: "Turn lights on when home (Night)"      
+  trigger:
+    platform: state 
+    entity_id: group.scott
+    from: 'not_home'
+    to: 'home'
+  condition:
+    condition: and 
+    conditions:  
+      - condition: time 
+        after: '21:00:01' 
+        before: '03:29:59'
+      - condition: state
+        entity_id: input_boolean.bedtime
+        state: 'off'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: scene.datenightoverheads
+    - service: homeassistant.turn_on
+      entity_id: switch.floor_lamp
+    - service: homeassistant.turn_on
+      entity_id: switch.dress_lamp 

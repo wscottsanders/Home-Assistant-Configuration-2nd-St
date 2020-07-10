@@ -1,0 +1,79 @@
+########################################
+## Sensors 
+########################################
+  
+  # Calendar Sensors
+  - platform: template
+    sensors:
+      wake_up_1: 
+        value_template: '{{ states.calendar.teaching.attributes.offset_reached }}'
+      wake_up_2:
+        value_template: '{{ states.calendar.chores_and_tasks.attributes.offset_reached }}'
+    
+  # Humidity Sensor
+  - platform: mqtt
+    name: "humidity_LR"
+    state_topic: "home-assistant/multi_1/multi_data"
+    unit_of_measurement: "%"
+    value_template: "{{value_json.humidity | float | round(2)}}"
+
+  # Light Sensor
+  - platform: mqtt
+    name: "lux_1"
+    state_topic: "home-assistant/multi_1/multi_data"
+    unit_of_measurement: "lx"
+    value_template: "{{value_json.lux | float | round(2)}}"    
+
+  # Motion Sensor
+  - platform: mqtt 
+    name: "pir_1"
+    state_topic: "home-assistant/pir_1/presence"
+  - platform: mqtt 
+    name: "pir_2"
+    state_topic: "home-assistant/pir_2/presence"      
+  
+  # System Resources 
+  - platform: systemmonitor
+    resources:
+      - type: ipv4_address
+        arg: eth0
+      - type: processor_use 
+      - type: disk_use_percent
+        arg: /
+      - type: memory_free
+      - type: memory_use_percent
+      - type: swap_use_percent
+      - type: since_last_boot
+  
+  # SABNZBD
+  - platform: sabnzbd
+    host: 192.168.1.80
+    port: 8080
+    api_key: !secret sabnzbd_api
+    sensors:
+      - 'current_status'
+      - 'speed'
+      - 'queue_size' 
+      - 'queue_remaining'
+      - 'disk_size'
+      - 'disk_free' 
+    
+  # Temperature Sensors
+  - platform: mqtt
+    name: "temperature_LR"
+    state_topic: "home-assistant/multi_1/multi_data"
+    unit_of_measurement: "°F"    
+    value_template: "{{ value_json.temperature | float | round(2)}}"
+    
+  # Weather Prediction
+  - platform: darksky
+    api_key: !secret dark_sky_api
+    forecast: 
+      - 1 
+    monitored_conditions:
+      - summary
+      - precip_type
+      - precip_intensity
+      - precip_probability
+      - cloud_cover
+      - temperature

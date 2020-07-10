@@ -1,0 +1,17 @@
+- alias: "Test spotify." 
+  trigger: 
+    platform: state
+    entity_id: input_boolean.spotify_trigger
+    to: 'on' 
+  action:
+    - service: homeassistant.turn_off
+      entity_id: input_boolean.spotify_trigger
+    - service: media_player.select_source 
+      data: 
+        entity_id: media_player.spotify
+        source: "Freya"
+    - service: media_player.play_media
+      data: 
+        entity_id: media_player.spotify
+        media_content_type: playlist
+        media_content_id: spotify:user:1264271378:playlist:1utFEL7fFxYLUFrRlvt7Mv

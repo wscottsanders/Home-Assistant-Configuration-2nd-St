@@ -1,0 +1,29 @@
+# Turns off pantry light if all overhead lights are turned off.
+# Intended to turn off light when leaving or going to bed. 
+
+- alias: "Turn off pantry w/ all overheads"
+  trigger: 
+    - platform: state
+      entity_id: light.living_overhead
+      to: 'off'
+    - platform: state
+      entity_id: light.kitchen_overhead
+      to: 'off'
+    - platform: state
+      entity_id: light.ch1
+      to: 'off'
+  condition: 
+    condition: and 
+    conditions: 
+      - condition: state
+        entity_id: light.living_overhead
+        state: 'off'
+      - condition: state
+        entity_id: light.kitchen_overhead
+        state: 'off'
+      - condition: state
+        entity_id: light.ch1
+        state: 'off' 
+  action: 
+    - service: homeassistant.turn_off
+      entity_id: switch.pantry_light

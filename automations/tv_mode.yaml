@@ -1,0 +1,32 @@
+- alias: "Turn on TV Mode w/ TV"
+  trigger:
+    platform: state
+    entity_id: media_player.samsung_tv, switch.tv_power
+    to: 'on'
+  condition:
+    condition: state
+    entity_id: light.living_overhead
+    state: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.tvmode
+    - service: homeassistant.turn_off
+      entity_id: switch.floor_lamp 
+    
+- alias: "Turn off TV Mode w/ TV"
+  trigger: 
+    - platform: state
+      entity_id: switch.tv_power
+      to: 'off'
+    - platform: state
+      entity_id: media_player.samsung_tv
+      to: 'off' 
+      for: 
+        seconds: 3
+  condition:
+    condition: state
+    entity_id: light.kitchen_overhead
+    state: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.raise_lights_

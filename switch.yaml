@@ -1,0 +1,63 @@
+######################
+##  Switch
+######################
+
+  - platform: rpi_rf
+    gpio: 5
+    switches:
+      # Switch Etekcity 316-01 
+      desk_lamp:
+        code_on: 5575987
+        code_off: 5575996
+        pulselength: 190
+        signal_repetitions: 15
+      # Switch Etekcity 316-02 
+      floor_lamp:
+        code_on: 5576131  
+        code_off: 5576140
+        pulselength: 190
+        signal_repetitions: 15
+      # Switch Etekcity 316-03 
+      bedside_lamp:
+        code_on: 5576451
+        code_off: 5576460
+        pulselength: 190
+        signal_repetitions: 15
+      # Switch Etekcity 316-04 
+      dress_lamp:  
+        code_on: 5577987
+        code_off: 5577996
+        pulselength: 190
+        signal_repetitions: 15
+      # Switch Etekcity 316-05 
+      kettle:
+        code_on: 5584131
+        code_off: 5584140
+        pulselength: 190
+        signal_repetitions: 15
+
+  - platform: command_line 
+    switches: 
+      tv_power: 
+        command_on: 'mosquitto_pub -h 127.0.0.1 -t "ir" -m "irsend SEND_ONCE SAMSUNG_TV KEY_POWER"' 
+        command_off: 'mosquitto_pub -h 127.0.0.1 -t "ir" -m "irsend SEND_ONCE SAMSUNG_TV KEY_POWER"'
+      tv_mute: 
+        command_on: 'mosquitto_pub -h 127.0.0.1 -t "ir" -m "irsend SEND_ONCE SAMSUNG_TV KEY_MUTE"'
+        command_off: 'mosquitto_pub -h 127.0.0.1 -t "ir" -m "irsend SEND_ONCE SAMSUNG_TV KEY_MUTE"'
+      tv_pause: 
+        command_on: 'mosquitto_pub -h 127.0.0.1 -t "ir" -m "irsend SEND_ONCE SAMSUNG_TV KEY_PLAY"'
+        command_off: 'mosquitto_pub -h 127.0.0.1 -t "ir" -m "irsend SEND_ONCE SAMSUNG_TV KEY_PLAY"'  
+      soundbar_power:
+        command_on: 'mosquitto_pub -h 127.0.0.1 -t "ir" -m "irsend SEND_ONCE SOUNDBAR KEY_POWER;"' 
+        command_off: 'mosquitto_pub -h 127.0.0.1 -t "ir" -m "irsend SEND_ONCE SOUNDBAR KEY_POWER"'        
+      subwoofer:
+        command_on: 'mosquitto_pub -h 127.0.0.1 -t "ir" -m "irsend SEND_ONCE SOUNDBAR KEY_RIGHT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_C; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_C; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_C; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_RIGHT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_RIGHT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_RIGHT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_RIGHT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_RIGHT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_RIGHT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_RIGHT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_RIGHT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_RIGHT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_RIGHT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_RIGHT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_RIGHT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_RIGHT"' 
+        command_off: 'mosquitto_pub -h 127.0.0.1 -t "ir" -m "irsend SEND_ONCE SOUNDBAR KEY_LEFT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_C; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_C; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_C; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_LEFT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_LEFT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_LEFT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_LEFT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_LEFT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_LEFT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_LEFT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_LEFT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_LEFT sleep .5; irsend SEND_ONCE SOUNDBAR KEY_LEFT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_LEFT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_LEFT; sleep .5; irsend SEND_ONCE SOUNDBAR KEY_LEFT"'
+      soundbar_vol: 
+        command_on: 'mosquitto_pub -h 127.0.0.1 -t "ir" -m "irsend SEND_START SOUNDBAR KEY_VOLUMEUP; sleep 1.1; irsend SEND_STOP SOUNDBAR KEY_VOLUMEUP"'
+        command_off: 'mosquitto_pub -h 127.0.0.1 -t "ir" -m "irsend SEND_START SOUNDBAR KEY_VOLUMEDOWN; sleep 1.1; irsend SEND_STOP SOUNDBAR KEY_VOLUMEDOWN"'      
+      soundbar_surround: 
+        command_on: 'mosquitto_pub -h 127.0.0.1 -t "ir" -m "irsend SEND_ONCE SOUNDBAR KEY_S; sleep .2; irsend SEND_ONCE SOUNDBAR KEY_S"'  
+        command_off: 'mosquitto_pub -h 127.0.0.1 -t "ir" -m "irsend SEND_ONCE SOUNDBAR KEY_S; sleep .2; irsend SEND_ONCE SOUNDBAR KEY_S"'
+        
+      

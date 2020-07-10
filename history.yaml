@@ -1,0 +1,39 @@
+########################################
+## History - Enables support for tracking state changes over time.
+########################################
+
+  include:
+    entities:   
+      - group.kitchen_overhead
+      - group.chandelier
+      - group.living_room_overhead
+      - group.scott
+      - media_player.samsung_tv
+      - sensor.pir_1
+      - switch.dress_lamp
+      - switch.bedside_lamp
+      - switch.br
+      - switch.floor_lamp
+      - switch.pantry_light
+      - switch.sink_light
+      - sun.sun       
+  exclude:
+    entities:
+      - switch.unused_switch1
+      - switch.unused_switch2
+      - group.kitchen
+      - group.everything
+      - group.living_room
+      - group.television
+      - group.weather
+      - sensor.cpu_use
+      - sensor.ram_use
+      #- sensor.humidity_LR
+      #- sensor.temperature_LR
+      #- sensor.lux_1
+      - sensor.dark_sky_temperature
+      - sensor.dark_sky_precip_intensity
+    domains:
+      - light
+      - automation
+      - updater
